@@ -56,8 +56,9 @@ SourceFiles
 #define turbulentHeatFluxTemperatureFvPatchScalarFields_H
 
 #include "fvPatchFields.H"
+#include "uniformFixedGradientFvPatchField.H"
 //#include "uniformFixedGradientFvPatchFields.H"
-#include "uniformFixedGradientFvPatchFields.C"
+//#include "uniformFixedGradientFvPatchFields.C"
 //#include "NamedEnum.H"
 #include "Enum.H"
 
@@ -74,7 +75,8 @@ namespace incompressible
 
 class turbulentHeatFluxTemperatureFvPatchScalarField
 :
-    public uniformFixedGradientFvPatchScalarField
+    //public uniformFixedGradientFvPatchScalarField
+    public uniformFixedGradientFvPatchField<scalar>
 {
 public:
 

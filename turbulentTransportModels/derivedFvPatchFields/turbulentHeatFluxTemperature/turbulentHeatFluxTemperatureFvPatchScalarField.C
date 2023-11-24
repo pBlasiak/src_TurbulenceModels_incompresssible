@@ -75,7 +75,8 @@ turbulentHeatFluxTemperatureFvPatchScalarField
     const DimensionedField<scalar, volMesh>& iF
 )
 :
-    uniformFixedGradientFvPatchScalarField(p, iF),
+    //uniformFixedGradientFvPatchScalarField(p, iF),
+    uniformFixedGradientFvPatchField<scalar>(p, iF),
     heatSource_(hsPower),
     q_(p.size(), 0.0),
     alphaEffName_("undefinedAlphaEff")
@@ -91,7 +92,8 @@ turbulentHeatFluxTemperatureFvPatchScalarField
     const fvPatchFieldMapper& mapper
 )
 :
-    uniformFixedGradientFvPatchScalarField(ptf, p, iF, mapper),
+    //uniformFixedGradientFvPatchScalarField(ptf, p, iF, mapper),
+    uniformFixedGradientFvPatchField<scalar>(ptf, p, iF, mapper),
     heatSource_(ptf.heatSource_),
     q_(ptf.q_, mapper),
     alphaEffName_(ptf.alphaEffName_)
@@ -106,7 +108,8 @@ turbulentHeatFluxTemperatureFvPatchScalarField
     const dictionary& dict
 )
 :
-    uniformFixedGradientFvPatchScalarField(p, iF, dict),
+    //uniformFixedGradientFvPatchScalarField(p, iF, dict),
+    uniformFixedGradientFvPatchField<scalar>(p, iF, dict),
     heatSource_(heatSourceTypeNames_.read(dict.lookup("heatSource"))),
     q_("q", dict, p.size()),
     alphaEffName_(dict.lookup("alphaEff"))
@@ -130,7 +133,8 @@ turbulentHeatFluxTemperatureFvPatchScalarField
     const turbulentHeatFluxTemperatureFvPatchScalarField& thftpsf
 )
 :
-    uniformFixedGradientFvPatchScalarField(thftpsf),
+    //uniformFixedGradientFvPatchScalarField(thftpsf),
+    uniformFixedGradientFvPatchField<scalar>(thftpsf),
     heatSource_(thftpsf.heatSource_),
     q_(thftpsf.q_),
     alphaEffName_(thftpsf.alphaEffName_)
@@ -144,7 +148,8 @@ turbulentHeatFluxTemperatureFvPatchScalarField
     const DimensionedField<scalar, volMesh>& iF
 )
 :
-    uniformFixedGradientFvPatchScalarField(thftpsf, iF),
+    //uniformFixedGradientFvPatchScalarField(thftpsf, iF),
+    uniformFixedGradientFvPatchField<scalar>(thftpsf, iF),
     heatSource_(thftpsf.heatSource_),
     q_(thftpsf.q_),
     alphaEffName_(thftpsf.alphaEffName_)
@@ -169,7 +174,8 @@ void turbulentHeatFluxTemperatureFvPatchScalarField::rmap
     const labelList& addr
 )
 {
-    uniformFixedGradientFvPatchScalarField::rmap(ptf, addr);
+    //uniformFixedGradientFvPatchScalarField::rmap(ptf, addr);
+    uniformFixedGradientFvPatchField<scalar>::rmap(ptf, addr);
 
     const turbulentHeatFluxTemperatureFvPatchScalarField& thftptf =
         refCast<const turbulentHeatFluxTemperatureFvPatchScalarField>
@@ -277,7 +283,8 @@ void turbulentHeatFluxTemperatureFvPatchScalarField::updateCoeffs()
 
 void turbulentHeatFluxTemperatureFvPatchScalarField::write(Ostream& os) const
 {
-    uniformFixedGradientFvPatchScalarField::write(os);
+    //uniformFixedGradientFvPatchScalarField::write(os);
+    uniformFixedGradientFvPatchField<scalar>::write(os);
     os.writeKeyword("heatSource") << heatSourceTypeNames_[heatSource_]
         << token::END_STATEMENT << nl;
     q_.writeEntry("q", os);
