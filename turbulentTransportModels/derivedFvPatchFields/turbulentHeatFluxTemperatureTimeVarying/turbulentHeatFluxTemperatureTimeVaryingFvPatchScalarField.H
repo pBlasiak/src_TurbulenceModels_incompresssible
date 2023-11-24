@@ -71,7 +71,7 @@ SourceFiles
 #ifndef turbulentHeatFluxTemperatureTimeVaryingFvPatchScalarFields_H
 #define turbulentHeatFluxTemperatureTimeVaryingFvPatchScalarFields_H
 
-#include "uniformFixedGradientFvPatchFields.H"
+#include "uniformFixedGradientFvPatchField.H"
 #include "Function1.H"
 //#include "PatchFunction1.H"
 #include "fvPatchFields.H"
@@ -91,7 +91,7 @@ namespace incompressible
 
 class turbulentHeatFluxTemperatureTimeVaryingFvPatchScalarField
 :
-    public uniformFixedGradientFvPatchScalarField
+    public uniformFixedGradientFvPatchField<scalar>
 {
 public:
 
